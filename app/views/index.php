@@ -2,7 +2,7 @@
 <?php require_once('common/header.php');?>
 
 <div class="container">
-    <div class="row" style="margin: 0;min-height:300px">
+    <div class="row" style="margin: 0;min-height:300px;">
         <div class="jumbotron search-box">
             <p>请输入查询域名：</p>
 
@@ -10,7 +10,7 @@
                 <input placeholder="比如：www.baidu.com"
                        type="text" id="search_info" class="form-control" value="">
                     <span class="input-group-btn scan-but-span">
-                        <button class="btn btn-success" id="btn_search" type="button">查找</button>
+                        <button class="btn btn-info" id="btn_search" type="button">查询</button>
                     </span>
             </div>
             <div class="input-group mt15 geetest-box hidden">
@@ -57,6 +57,7 @@
                         content: msg
                     });
                     d.show();
+                    $("#btn_search").html('查询');
                 }
 
             });

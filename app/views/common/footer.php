@@ -1,8 +1,9 @@
 <hr style=""/>
 <footer>
     <div class="text-center muted">
+        <img src="res/images/footer.png"><br>
         &copy; <script>document.write((new Date().getFullYear()))</script>
-        后台管理系统 <br/>
+        域名批量解析系统 <br/>
 <!--        Powered by <a href="http://www.freedomdream.cn" target="_blank">畅想科技</a>-->
     </div>
 </footer>

@@ -13,8 +13,12 @@ class Index extends CI_Controller{
         parent::__construct();
         //$this->admin_model->auth_check();
         $this->load->model('index_model');
-        ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)');
 
+        //加载PHP EXCEL
+        $this->load->library('PHPExcel');
+
+        //模拟UA提交
+        ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)');
 
     }
 
@@ -27,7 +31,10 @@ class Index extends CI_Controller{
         $data['login_num'] = $this->index_model->get_log_total_num($this->session->userdata('admin_info'));
         $data['latest_login'] = $this->index_model->get_latest_login_time($this->session->userdata('admin_info'));*/
         //$this->load->view('index', $data);
+
+        //$this->load->library('PHPExcel/IOFactory');
         $this->load->view('index');
+
     }
 
     /**
