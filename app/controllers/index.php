@@ -17,8 +17,13 @@ class Index extends CI_Controller{
         //加载PHP EXCEL
         $this->load->library('PHPExcel');
 
+        //加载自定义选项
+        $this->config->load('user_define', TRUE);
+
+
+
         //模拟UA提交
-        ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)');
+        //ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)');
 
     }
 
@@ -42,16 +47,23 @@ class Index extends CI_Controller{
      */
     public function get_info(){
         $search_info = $this->input->post('_search_info');
-        $api_link = "http://freeapi.ipip.net/".$search_info;
+
+        $api_link = $this->config->config['user_define']['ip_api_info']['taobao'];
+
+        die(gethostbyname($search_info));
+
+        //die($this->config->config['user_define']['ip_api_info']['taobao']);
+
+        $get_result_info = $api_link.gethostbyname($search_info);
         /*ob_start();
         read_file($api_link);
 
         $result = json_decode(ob_get_contents());
 
         ob_end_clean();*/
-        $result = (file_get_contents($api_link));
+        $result = file_get_contents($get_result_info);
         die($result);
-        echo $search_info;exit;
+
     }
 
     /**

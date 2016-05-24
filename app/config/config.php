@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/Domain-Transform-System/';
+$config['base_url']	= 'http://localhost/dts/';
 
 /*
 |--------------------------------------------------------------------------

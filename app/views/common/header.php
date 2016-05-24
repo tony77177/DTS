@@ -40,7 +40,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">域名批量解析系统</a>
+            <a class="navbar-brand" style="color: #fff;" href="">域名批量解析系统</a>
+            <!--<a class="navbar-brand" style="color: #fff;" href="">域名批量解析系统1</a>
+            <a class="navbar-brand" style="color: #fff;" href="">域名批量解析系统2</a>-->
         </div>
         <div class="navbar-collapse collapse">
 
