@@ -48,20 +48,38 @@ class Index extends CI_Controller{
     public function get_info(){
         $search_info = $this->input->post('_search_info');
 
-        $api_link = $this->config->config['user_define']['ip_api_info']['taobao'];
+        //die($this->config->config['user_define']['ip_api_info']['taobao']);
 
-        die(gethostbyname($search_info));
+        $api_link = $this->config->config['user_define']['ip_api_info'][$this->config->config['user_define']['cur_ip_api_cfg']];//组装API链接地址
+
+        //die(gethostbyname($search_info));
 
         //die($this->config->config['user_define']['ip_api_info']['taobao']);
 
-        $get_result_info = $api_link.gethostbyname($search_info);
-        /*ob_start();
-        read_file($api_link);
+        $get_result_info = $api_link.gethostbyname($search_info);//组装最终请求地址，利用PHP gethostbyname函数解析域名地址
 
-        $result = json_decode(ob_get_contents());
+        $result = json_decode(file_get_contents($get_result_info));//获取网页请求返回内容
 
-        ob_end_clean();*/
-        $result = file_get_contents($get_result_info);
+        $result_code = $result->code;
+
+        $result_data = $result->data->country;
+
+        $result_data .= ','.$result->data->region;
+
+        $result_data .= ','.$result->data->city;
+
+        $result_data .= ','.$result->data->isp;
+
+        if($result_code==1){
+            die('fail');
+        }else{
+            die($result_data);
+        }
+
+        $result_data = $result->data;
+
+        die($result_code);
+
         die($result);
 
     }

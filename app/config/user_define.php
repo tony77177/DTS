@@ -57,6 +57,24 @@ $config['ip_api_info'] = array(
 );
 
 
+/**
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *             设置当前获取IP地址的接口
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *
+ * taobao    淘宝API免费公共接口       地址：http://ip.taobao.com/
+ *
+ * ipip      IPIP.net免费公共接口     地址：http://freeapi.ipip.net/
+ *
+ * ip138     IP138.com免费公共接口    地址：http://www.ip138.com/api/
+ *
+ * 缺省采用淘宝API，更换的话将 taobao 更改即可；
+ *
+ */
+
+$config['cur_ip_api_cfg'] = 'taobao';
+
+
 
 /* End of file user_define.php */
 /* Location: ./app/config/user_define.php */

@@ -49,7 +49,7 @@
             }).show();
 
             $.post("<?php echo site_url('index/get_info') ?>", {_search_info: search_info}, function (msg){
-                if(msg==''){
+                if(msg=='fail'){
                     var d = dialog({
                         title: '结果',
                         content: '查询失败，请确认输入数据正确性'
