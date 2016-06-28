@@ -16,9 +16,12 @@ class Index extends CI_Controller{
 
         //加载PHP EXCEL
         $this->load->library('PHPExcel');
+        $this->load->library('PHPExcel/IOFactory');
 
         //加载自定义选项
         $this->config->load('user_define', TRUE);
+
+//        $this->load->library('phpexcel');
 
 
 
@@ -44,6 +47,8 @@ class Index extends CI_Controller{
 
     /**
      * 根据前台回传域名解析对应IP地址，并利用IP地址解析其归属地
+     *
+     * 默认有3个API供选择，默认情况选择淘宝API获取信息
      */
     public function get_info(){
         $search_info = $this->input->post('_search_info');
@@ -76,13 +81,49 @@ class Index extends CI_Controller{
             die($result_data);
         }
 
-        $result_data = $result->data;
-
-        die($result_code);
-
-        die($result);
-
     }
+
+
+    /**
+     * 上传excel文件，并进行解析返回对应IP结果
+     *  暂定两种处理逻辑：
+     *      1）如果有IP则直接查询归属地；
+     *      2）如果是域名，先通过DNS解析IP，然后再查询归属地
+     *
+     *  查询完成之后封装对应的结果，生成excel文件进行输出
+     *
+     *  create time:2016-6-6 11:19:45
+     */
+
+     public function get_info_by_file(){
+         //$this->load->library('PHPExcel');
+
+//         $this->load->library('phpexcel');
+//         $this->load->library('PHPExcel/iofactory');
+
+         $this->load->file(APPPATH.'libraries/PHPExcel/IOFactory.php'); //full path to
+
+         //$this->load->library ( array( 'form_validation' ,'PHPExcel','PHPExcel/IOFactory'));
+
+         $objPHPExcel = new PHPExcel();
+         $objPHPExcel -> getProperties() -> setTitle("export") -> setDescription("none");
+
+         $objPHPExcel -> setActiveSheetIndex(0);
+
+
+         $objWriter = IOFactory::createWriter($objPHPExcel, 'Excel5');
+//         $objWriter = IOFactory :: createWriter($objPHPExcel, 'Excel5');
+         // Sending headers to force the user to download the file
+         header('Content-Type: application/vnd.ms-excel');
+         header('Content-Disposition: attachment;filename="Products_' . date('dMy') . '.xls"');
+         header('Cache-Control: max-age=0');
+
+         $objWriter -> save('php://output');
+
+
+     }
+
+
 
     /**
      * 密码修改

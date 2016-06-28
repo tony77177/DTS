@@ -7,6 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="res/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!--    <link href="res/bootstrap/css/default.css" rel="stylesheet" type="text/css">-->
+    <link href="res/bootstrap/css/fileinput.min.css" rel="stylesheet" type="text/css">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -25,6 +27,8 @@
 
     <!-- Bootstrap JS -->
     <script src="res/bootstrap/js/bootstrap.min.js"></script>
+    <script src="res/bootstrap/js/fileinput.min.js"></script>
+    <script src="res/bootstrap/js/fileinput_locale_zh.js"></script>
 
 </head>
 
